@@ -1,8 +1,8 @@
 {
-  "name": "my-nuxt-layer",
+  "name": "@limbo-works/swiper-wrap",
   "type": "module",
   "version": "0.0.1",
-  "main": "./nuxt.config.ts",
+  "main": "./nuxt.config.js",
   "scripts": {
     "dev": "nuxi dev .playground",
     "build": "nuxt build .playground",

@@ -1,73 +1,96 @@
-# Nuxt Layer Starter
+# SwiperWrap
+a Nuxt component for handling swipers
 
-Create Nuxt extendable layer with this GitHub template.
 
-## Setup
+## Basic usage
 
-Make sure to install the dependencies:
+```
+<SwiperWrap
+  :move-by="1"
+  :class=""
+  :items-wrapper-class-names=""
+>
 
-```bash
-pnpm install
+  <template #before="{ showPagination, go }">
+    <div>
+      <button
+        :aria-disabled="!showPagination.previous"
+        aria-label="Gå til forrige"
+        @click="() => go.previous(false)"
+      >
+        prev
+      </button>
+      <button
+        :aria-disabled="!showPagination.next"
+        aria-label="Gå til næste"
+        @click="() => go.next(false)"
+      >
+        next
+      </button>
+    </div>
+  </template>
+
+  <template #items>
+    <div
+      v-for="item in list"
+      :key="item"
+    >
+      ...
+    </div>
+  </template>
+
+  <template #default="{ pagination }">
+    <div
+      v-if="images[pagination.index]"
+    >
+      <span
+        v-if="images.length > 1"
+        class="
+          text-image-pagination
+        "
+        v-text="`${pagination.index + 1} / ${pagination.count}`"
+      ></span>
+    </div>
+  </template>
+
+</Swiperwrap>
 ```
 
-## Working on your theme
 
-Your theme is at the root of this repository, it is exactly like a regular Nuxt project, except you can publish it on NPM.
+## Available configuration
 
-The `.playground` directory should help you on trying your theme during development.
+### Props
+| Prop                | Description                                                                      |
+| ------------------- | -------------------------------------------------------------------------------- |
+| tag        | tag of container element. Default: 'section'            |
+| moveBy        | How many items should a single go.next() or go.prev() move. Default: -1             |
+| itemsWrapperClassNames | A string of classes to at to wrapper dev og components |
+| setIndex | start index. Default: 0 |
+| screenReaderTemplate | A template string for status element in screenreaders. Default: 'Viser slide #{active} af #{total}', |
 
-Running `pnpm dev` will prepare and boot `.playground` directory, which imports your theme itself.
 
-## Distributing your theme
+### Available slots
+| Slot name           | Description                                                                      |
+| ------------------- | -------------------------------------------------------------------------------- |
+| default        | content placed after items container              |
+| before | content placed before items container |
+| items | Items container |
+| custom | used to overwrite all behaviour, wraps all other slots |
 
-Your Nuxt layer is shaped exactly the same as any other Nuxt project, except you can publish it on NPM.
+#### Slot props available for all slots
 
-To do so, you only have to check if `files` in `package.json` are valid, then run:
-
-```bash
-npm publish --access public
-```
-
-Once done, your users will only have to run:
-
-```bash
-npm install --save your-theme
-```
-
-Then add the dependency to their `extends` in `nuxt.config`:
-
-```ts
-defineNuxtConfig({
-  extends: 'your-theme'
-})
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-pnpm dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Or statically generate it with:
-
-```bash
-pnpm generate
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment) for more information.
+| Slot name           | Description                                                                      |
+| ------------------- | -------------------------------------------------------------------------------- |
+| state.scrollable        | Boolean. is scrollable             |
+| state.inView | Array. Items in view. |
+| go.previous() | Function. Move back by specied moveBy amount |
+| go.next() | Function. Move forward by specied moveBy amount |
+| go.to() | Function. Move to specied index |
+| pagination.index | Int. Currentindex, first of shown items |
+| pagination.count | Int. Total number of items. |
+| showPagination.next | Boolean. Should next button be shown. |
+| showPagination.previous | Boolean. Should previous button be shown. |
+| showPagination.either | Boolean. Should either previous or next button be shown. |
+| showPagination.both | Boolean. Should both previous and next button be shown. |
+| methods.updateCurrent() | Function. Updates pagination.index and state.inView items. (happens in default use-cases automatically) |
+| methods.goToFocused() | Function. Updates pagination.index and state.inView items to go from element in focus. |
