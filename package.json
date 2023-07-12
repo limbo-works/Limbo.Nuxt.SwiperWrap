@@ -1,7 +1,7 @@
 {
   "name": "@limbo-works/swiper-wrap",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./nuxt.config.js",
   "scripts": {
     "dev": "nuxi dev .playground",
@@ -9,8 +9,7 @@
     "generate": "nuxt generate .playground",
     "preview": "nuxt preview .playground",
     "lint": "eslint .",
-    "test": "exit 0",
-    "postinstall": "nuxt prepare .playground"
+    "test": "exit 0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.1.1",
