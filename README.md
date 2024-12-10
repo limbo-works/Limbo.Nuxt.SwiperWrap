@@ -64,7 +64,7 @@ a Nuxt component for handling swipers
 | ------------------- | -------------------------------------------------------------------------------- |
 | tag        | tag of container element. Default: 'section'            |
 | moveBy        | How many items should a single go.next() or go.prev() move. Default: -1             |
-| itemsWrapperClassNames | A string of classes to at to wrapper dev og components |
+| itemsWrapperClassNames | A string of classes to add to wrapper div and components |
 | setIndex | start index. Default: 0 |
 | screenReaderTemplate | A template string for status element in screenreaders. Default: 'Viser slide #{active} af #{total}', |
 
