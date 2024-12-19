@@ -22,7 +22,7 @@
         @touchmove="updateCurrent"
         @touchend="updateCurrent"
         @focusout="_prepareFocusChange"
-        @focusin="goToFocused"
+        @focusin="(event) => autoFocus && goToFocused(event)"
       >
         <slot v-bind="slotBindings" name="items" />
       </div>
@@ -60,6 +60,10 @@ export default {
     screenReaderTemplate: {
       type: String,
       default: "Viser slide #{active} af #{total}",
+    },
+    autoFocus: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {
