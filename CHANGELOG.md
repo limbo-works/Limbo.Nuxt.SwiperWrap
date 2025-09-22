@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/limbo-works/Limbo.Nuxt.SwiperWrap/compare/v1.1.0...v1.1.1) (2025-09-22)
+
+
+### Bug Fixes
+
+* upgrade nuxt config to ts ([fee4a70](https://github.com/limbo-works/Limbo.Nuxt.SwiperWrap/commit/fee4a705b301e370a4eefdcc5dcdcf51a931d14c))
+
 ## [1.1.0](https://github.com/limbo-works/Limbo.Nuxt.SwiperWrap/compare/v1.0.0...v1.1.0) (2024-12-19)
 
 
