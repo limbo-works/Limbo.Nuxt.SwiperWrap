@@ -9,11 +9,11 @@
     "generate": "nuxt generate .playground",
     "preview": "nuxt preview .playground",
     "lint": "eslint .",
-    "test": "exit 0"
+    "test": "exit 0",
+    "lint:fix": "yarn prettier --write . && yarn eslint --fix --quiet ."
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.1.1",
-    "eslint": "^8.28.0",
-    "nuxt": "^3.0.0"
+    "@limbo-works/lint-configs": "^2.1.0",
+    "nuxt": "^4"
   }
 }
